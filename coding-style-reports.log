@@ -1,0 +1,8 @@
+./include/bitmap.h:1: MAJOR:C-H2
+./src/main.c:28: MAJOR:C-F3
+./src/main.c:58: MINOR:C-G7
+./src/main.c:58: MINOR:C-L6
+./src/main.c:61: MAJOR:C-F3
+./src/main.c:74: MAJOR:C-O3
+./src/main.c:91: MAJOR:C-O3
+./src/main.c:99: MAJOR:C-O3
