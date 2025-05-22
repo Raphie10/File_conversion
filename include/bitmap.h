@@ -13,11 +13,14 @@
 #define MAGIC_WORD_SIZE 2
 #define GET_PADDING(size_x) ((4 - ((size_x * 3) % 4)) % 4)
 
-typedef struct color_s {
+#define RGB_SIZE 3
+
+typedef struct color_rgb_s {
     char blue;
     char green;
     char red;
-} color_t;
+} color_rgb_t;
+
 
 typedef struct bitmap_file_header_s {
     int prog_size;
@@ -64,22 +67,19 @@ typedef struct bitmap_info_header_s {
 typedef struct bitmap_file_s {
     bitmap_file_header_t file_header;
     bitmap_info_header_t info_header;
-    color_t **content;
+    color_rgb_t **content;
 }bitmap_file_t;
-
-typedef struct png_file_chunk_s
-{
-    unsigned int size;
-    char type[4];
-    void *data;
-} png_file_chunk_t;
-
 
 //generate content
 
-bitmap_file_t generate_blank_file(int size_x, int size_y, int info_header_size);
+bitmap_file_t generate_blank_bitmap_file(int size_x, int size_y, int info_header_size);
 
+bitmap_file_t get_bitmap_file(char *filename);
 
-void print_header(char *filename);
+color_rgb_t **generate_blank_rgb_content(int size_x, int size_y);
 
-bitmap_file_t get_file(char *filename);
+void generate_png_file(void);
+
+void modify_file(color_rgb_t **content, int size_x, int size_y);
+
+void write_bitmap_file(bitmap_file_t file);

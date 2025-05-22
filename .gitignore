@@ -54,3 +54,5 @@ dkms.conf
 
 # Project
 testfile.*
+.vscode
+*.py

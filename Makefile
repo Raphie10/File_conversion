@@ -5,13 +5,20 @@
 ## Makefile for robotfactory project
 ##
 
-SRC     =       src/main.c				\
-				src/generate_content.c	\
-				src/read_content.c
+SRC     =       src/main.c					\
+				src/generate_content.c		\
+				src/read_bitmap_content.c	\
+				src/generate_png_file.c		\
+				src/get_crc.c				\
+				src/modify_file.c			\
+				src/write_bitmap_file.c		\
+				src/write_png_file.c		\
+				src/convert_bitmap_to_png.c	\
+				
 
 OBJ     =       $(SRC:.c=.o)
 
-NAME = amazed
+NAME = file_converter
 
 all: $(NAME)
 

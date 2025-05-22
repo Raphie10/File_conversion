@@ -55,23 +55,21 @@ bitmap_info_header_t create_info_header(int size_x, int size_y, int info_header_
     case 56:
         info_header.alpha_mask = 0xFF000000;
     case 108:
-    
 
-    
     default:
         break;
     }
     return info_header;
 }
 
-color_t **generate_blank_content(int size_x, int size_y)
+color_rgb_t **generate_blank_rgb_content(int size_x, int size_y)
 {
-    color_t **content = malloc(sizeof(color_t *) * (size_y + 1));
-    color_t *line;
+    color_rgb_t **content = malloc(sizeof(color_rgb_t *) * (size_y + 1));
+    color_rgb_t *line;
 
-    for (int i = 0; i <= size_y; i++) {
-        line = malloc(sizeof(color_t) * (size_x + 1));
-        for (int j = 0; j <= size_x; j++) {
+    for (int i = 0; i < size_y; i++) {
+        line = malloc(sizeof(color_rgb_t) * size_x);
+        for (int j = 0; j < size_x; j++) {
             line[j].blue = 255;
             line[j].green = 255;
             line[j].red = 255;
@@ -81,11 +79,11 @@ color_t **generate_blank_content(int size_x, int size_y)
     return content;
 }
 
-bitmap_file_t generate_blank_file(int size_x, int size_y, int info_header_size)
+bitmap_file_t generate_blank_bitmap_file(int size_x, int size_y, int info_header_size)
 {
     bitmap_file_header_t file_header = create_file_header(size_x, size_y, info_header_size);
     bitmap_info_header_t info_header = create_info_header(size_x, size_y, info_header_size);
-    color_t **file_content = generate_blank_content(size_x, size_y);
+    color_rgb_t **file_content = generate_blank_rgb_content(size_x, size_y);
     bitmap_file_t file = {file_header, info_header, file_content};
 
     return file;
